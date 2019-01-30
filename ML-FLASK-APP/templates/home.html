@@ -1,0 +1,273 @@
+{% extends "bootstrap/base.html" %}
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<style>
+body {
+  font-family: Arial;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+.column {
+  float: left;
+  width: 55%;
+  padding: 0 20px;
+  margin-left: 75px;
+}
+
+.column1 {
+  float: left;
+  width: 32%;
+  padding: 0 10px;
+ margin-right: 88px;
+ margin-left: 13px;
+
+ 
+}
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 1000px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  text-align: center;
+  background-color: #f1f1f1;
+
+}
+
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+div.container {
+ 
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+
+
+
+}
+div.container2 {
+ 
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 2px;
+
+  
+}
+div.container3 {
+ 
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 3px;
+  
+}
+</style>
+<body>
+
+<div class="container" style="background-image: url(/static/back2.jpg);">
+  <div class="jumbotron" style="background-color: rgba(255,99,71,0.5) !important;" >
+    <h2 style="color:#fff;">Bangalore House Price Prediction</h2>      
+    <p style="color:#fff;">Using Machine Learning to Predict Price </p>
+
+  </div>
+  </div>
+
+<div style="padding-left:  100px">
+      <h3 style="color:#41926C; font-family:Times New Roman;">Predictor &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Developed By </h3>
+      <h5 style="font-family:Times New Roman;">Housing prices are an important reflection of the economy&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;SUMAN KHATUA | ACHINTYA AGARWAL</h5>
+      <h5 style="font-family:Times New Roman;">and housing price ranges are of great interest for both buyers and sellers&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;CHERAKU VISHISHT REDDY | AKASH KUMAR</h5>  
+      <!--<a href="{{url_for('home')}}" style="font-size: large;">View Dataset</a>-->
+      
+  </div>
+
+
+<div class="row">
+  <div class="column">
+    <div class="card">
+      
+<div class="container2" style="background-color:#EBDEF0 !important;">
+  <form class="form-inline" action="{{ url_for('analyze')}}" method="POST">
+      <div>
+          <div class="form-group">
+            <label for="inputState" style="color:#D94D8B">BHK-SIZE : </label>
+          <select id="BHK" name="BHK" class="form-control" style="width: 180px">
+        <option selected>Select</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        
+      </select>
+      </div>
+
+      <div class="form-group">
+      <label for="inputState" style="color:#D94D8B"> &nbsp;&nbsp;BALCONY : </label>
+      <select id="BALCONY" name="BALCONY" class="form-control" style="width: 180px">
+        <option selected>Select</option>
+        <option>0</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+      </select>
+      </div>
+  </div> 
+      <div class="form-group">
+      <label for="inputState" style="color:#D94D8B">BATHROOM</label>
+      <select id="BATHROOM" name="BATHROOM" class="form-control" style="width: 170px">
+        <option selected>Select</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+
+      </select>
+      </div>
+      <div class="form-group">
+      <label for="inputState" style="color:#D94D8B">&nbsp;&nbsp;AREA-TYPE : </label>
+      <select id="AREA-TYPE" name= "AREA" class="form-control" style="width: 170px">
+        <option selected>Select</option>
+        <option>Super Built_up Area</option>
+        <option>Carpet Area</option>
+        <option>Built_Up Area</option>
+        <option>Plot Area</option>
+        
+      </select>
+      </div>
+
+      <div class="form-group">
+        <label for="inputZip"style="color:#D94D8B">TOTAL SQFT : </label>
+        <input type="Number" step=0.01 class="form-control" id="TOTAL-SQFT" name="SQFT" style="width: 150px" placeholder="put 100-3500">
+      </div>
+      <div class="form-group">
+      <label for="inputState" style="color:#D94D8B"> &nbsp;&nbsp;AVAILABILITY:</label>
+      <select id="AVAILABILITY" class="form-control" name="AVAILABILITY" style="width: 170px">
+        <option selected>Select</option>
+        <option>Ready to move</option>
+        <option>Available after may 2019</option>
+        
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="inputState" style="color:#D94D8B">LOCATION :</label>
+      <select id="LOCATION" class="form-control" name= "LOCATION" style="width: 170px">
+        <option selected>Select</option>
+        <option>Whitefield</option>
+        <option>Sarjapur Road</option>
+        <option>Electronic City</option>
+        <option>Kanakpura Road</option>
+        <option>Thanisandra</option>
+        <option>Yelahanka</option>
+        <option>Uttarahalli</option>
+        <option>Hebbal</option>
+        <option>Marathahalli</option>
+        <option>Raja Rajeshwari Nagar</option>
+        <option>Hennur Road</option>
+        <option>Bannerghatta Road</option>
+        <option>7th Phase JP Nagar</option>
+        <option>Haralur Road</option>
+        <option>Electronic City Phase II</option>
+        <option>Rajaji Nagar</option>
+        <option>Bellandur</option>
+        <option>KR Puram</option>
+        <option>Electronics City Phase 1</option>
+        <option>Yeshwanthpur</option>
+        
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="inputState" style="color:#D94D8B">&nbsp;&nbsp; ML MODEL : </label>
+      <select id="ML-MODEL" class="form-control" name="MODEL" style="width: 180px">
+        <option selected>Select</option>
+        <option>Gradient Boosting</option>
+        <option>Random Forest</option>
+      </select>
+    </div>
+    
+    </div>
+    <input type="submit" value="PREDICT" style="font-size: large;">
+  </form>
+  
+
+</div>
+
+  
+  </div>
+
+  <div class="column1">
+    <div class="card">
+      
+<div class="container3" style="margin-top: 7px; background-color:rgba( 158, 15, 72,1); " >
+  <h3 style="color:#fff  ; font-family:Times New Roman;">Selected Values</h2>
+  <h5 style="color:#fff  ; font-family:Times New Roman;">Bhk:{{ size }} | Area:{{ area }} </h5>
+  <h5 style="color:#fff  ; font-family:Times New Roman;">No. Of Bathroom:{{ bath }}| Availability:{{ avail }}</h5>
+  <h5 style="color:#fff  ; font-family:Times New Roman;">Total_Sq.Ft:{{ sqft }} | Location:{{ location }}</h5>
+  <h5 style="color:#fff  ; font-family:Times New Roman;">No. Of Balcony:{{ balcony }} | Choosed Model Is : {{ model }} </h5>
+
+  		<h3 style="color:#fff  ; font-family:Times New Roman;">Prediction</h2>
+        <h4 style="color:#fff  ; font-family:Times New Roman;">Predicted Price Is :  {{ result_prediction }} Lacs.</h3>
+        <h4 style="color:#fff  ; font-family:Times New Roman;">Predicted Range Is :  {{ result_down }}  to  {{ result_up }}  Lacs. </h4>
+        
+        
+        
+     </div> 
+	</div>
+  </div>      
+    </div>
+  </div>
+
+</body>
+</html>
+
+{% endblock %}
+
+    
+
